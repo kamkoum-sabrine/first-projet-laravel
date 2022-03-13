@@ -6,7 +6,9 @@ use Illuminate\Http\Request;
 
 class AppController extends Controller
 {
-    public function welcome (){
-        return view('welcome');
+    public function welcome()
+    {
+        $todos = Todo::all();
+        return view('welcome', ['todos' => $todos]);
     }
 }
