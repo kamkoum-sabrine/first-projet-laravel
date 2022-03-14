@@ -44,7 +44,7 @@
                         </g>
                     </svg>
                 </div>
-                <h2>TODOS</h2>
+                <h2>TODOS App</h2>
                 <ul>
                     @foreach ($todos as $todo)
                         <li>{{ $todo->title }}</li>
