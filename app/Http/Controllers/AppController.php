@@ -11,14 +11,14 @@ class AppController extends Controller
     {
         //$todos = Todo::all();
         $posts = Post::all();
-        dd($posts);
+       
         return view('welcome');
     }
     public function todos()
     {
         //$todos = Todo::all();
         $posts = Post::all();
-        dd($posts);
-        return view('todos');
+        
+        return view('todos',['posts'=>$posts]);
     }
 }
