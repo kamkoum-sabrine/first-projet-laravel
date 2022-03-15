@@ -16,7 +16,7 @@ class CreateActivitiesTable extends Migration
         Schema::create('activities', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->foreignId('activity_id');
+            $table->foreignId('todo_id')->references('id')->on('todos');
             $table->string('status');
             $table->date('dead_line');
             $table->timestamps();
