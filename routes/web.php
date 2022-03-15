@@ -1,6 +1,7 @@
 <?php
-use App\Http\Controllers\AppController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AppController;
+use App\Http\Controllers\TodoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,4 +15,5 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [AppController::class, 'welcome']);
-Route::get('/todos',[AppController::class,'todos']);
+//Route::get('/todos',[AppController::class,'todos']);
+Route::resource('todos', TodoController::class);

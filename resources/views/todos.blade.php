@@ -23,7 +23,7 @@
     <body class="antialiased">
         <h1>Todo</h1>
         @foreach($posts as $post)
-            <p>{{ $posts }}</p>
+            <p>{{ $post->title }}</p>
         @endforeach
     </body>
 </html>
