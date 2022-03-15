@@ -14,6 +14,6 @@ use App\Http\Controllers\TodoController;
 |
 */
 
-Route::get('/', [AppController::class, 'welcome']);
+
 //Route::get('/todos',[AppController::class,'todos']);
 Route::resource('todos', TodoController::class);
