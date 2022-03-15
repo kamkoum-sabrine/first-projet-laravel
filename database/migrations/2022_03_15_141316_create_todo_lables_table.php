@@ -15,8 +15,8 @@ class CreateTodoLablesTable extends Migration
     {
         Schema::create('todo_labels', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('activity_id');
-            $table->foreignId('label_id')->references('id')->on('activities');
+            $table->foreignId('activity_id')->references('id')->on('activities');
+            $table->foreignId('label_id')->references('id')->on('labels');
             $table->timestamps();
         });
     }
