@@ -13,7 +13,10 @@ class TodoController extends Controller
      */
     public function index()
     {
-        //
+        $todos = Todo::latest()->paginate(5);
+    
+        return view('todos.index',compact('todos'))
+            ->with('i', (request()->input('page', 1) - 1) * 5);
     }
 
     /**
@@ -23,7 +26,7 @@ class TodoController extends Controller
      */
     public function create()
     {
-        //
+        return view('todos.create');
     }
 
     /**
@@ -34,7 +37,15 @@ class TodoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'title' => 'required',
+            'priority' => 'required',
+        ]);
+    
+        Todo::create($request->all());
+     
+        return redirect()->route('todos.index')
+                        ->with('success','Todo created successfully.');
     }
 
     /**
@@ -43,9 +54,9 @@ class TodoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Todo $todo)
     {
-        //
+        return view('todos.show',compact('todo'));
     }
 
     /**
@@ -54,9 +65,9 @@ class TodoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Todo $todo)
     {
-        //
+        return view('todos.edit',compact('todo'));
     }
 
     /**
@@ -66,9 +77,17 @@ class TodoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Todo $todo)
     {
-        //
+        $request->validate([
+            'title' => 'required',
+            'priority' => 'required',
+        ]);
+    
+        $todo->update($request->all());
+    
+        return redirect()->route('todos.index')
+                        ->with('success','Todo updated successfully');
     }
 
     /**
@@ -77,8 +96,11 @@ class TodoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Todo $todo)
     {
-        //
+        $todo->delete();
+    
+        return redirect()->route('todos.index')
+                        ->with('success','Todo deleted successfully');
     }
 }
