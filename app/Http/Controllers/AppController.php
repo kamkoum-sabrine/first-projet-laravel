@@ -11,7 +11,7 @@ class AppController extends Controller
     {
         //$todos = Todo::all();
         $posts = Post::all();
-        var_dump($posts);
+        dd($posts);
         return view('welcome');
     }
 }
