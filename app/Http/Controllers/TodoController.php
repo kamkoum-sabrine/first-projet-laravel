@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Todo;
 use Illuminate\Http\Request;
+use App\Http\Requests\ValidateTodo;
 
 class TodoController extends Controller
 {
@@ -36,7 +37,7 @@ class TodoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ValidateTodo $request)
     {
         $request->validate([
             'title' => 'required',
@@ -78,7 +79,7 @@ class TodoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Todo $todo)
+    public function update(ValidateTodo $request, Todo $todo)
     {
         $request->validate([
             'title' => 'required',
