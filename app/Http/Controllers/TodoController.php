@@ -43,9 +43,13 @@ class TodoController extends Controller
             'title' => 'required',
             'priority' => 'required',
         ]);
-    
-        Todo::create($request->all());
-     
+     //  var_dump($request->all());
+       $todo = new Todo();
+       $todo->title = $request->title;
+       $todo->priority = $request->priority;
+       $todo->save();
+       // Todo::create($request->all());
+        
         return redirect()->route('todos.index')
                         ->with('success','Todo created successfully.');
     }

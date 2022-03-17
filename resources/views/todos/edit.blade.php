@@ -31,13 +31,14 @@
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                     <strong>Todo:</strong>
-                    <input type="text" name="todo" value="{{ $todo->title }}" class="form-control" placeholder="Title">
+                    <input type="text" name="title" value="{{ $todo->title }}" class="form-control" placeholder="Title">
                 </div>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                     <strong>Priority:</strong>
-                    <textarea class="form-control" style="height:150px" name="priority" placeholder="Priority">{{ $todo->priority }}</textarea>
+                    <input type="number" name="priority" value="{{ $todo->priority }}" class="form-control" placeholder="Priority">
+              
                 </div>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12 text-center">
